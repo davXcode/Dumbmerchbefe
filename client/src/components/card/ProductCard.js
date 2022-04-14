@@ -10,7 +10,7 @@ export default function ProductCard({ item, index }) {
       style={{ textDecoration: "none" }}
       key={index}
     >
-      <div className="card-product mt-3">
+      <div className="card-product mt-3 ">
         <img src={item.image} className="img-fluid img-rounded" />
         <div className="p-2">
           <div className="text-header-product-item">{item.name}</div>

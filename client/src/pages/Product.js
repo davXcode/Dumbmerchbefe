@@ -13,6 +13,9 @@ import { API } from "../config/api";
 export default function Product() {
   let api = API();
 
+  const title = "product";
+  document.title = title;
+
   // Fetching product data from database
   let { data: products, refetch } = useQuery("productsCache", async () => {
     const config = {
@@ -34,7 +37,7 @@ export default function Product() {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar title={title}/>
       <Container className="mt-5">
         <Row>
           <Col>

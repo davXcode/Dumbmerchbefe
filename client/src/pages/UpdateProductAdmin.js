@@ -14,8 +14,9 @@ import { useQuery, useMutation } from "react-query";
 import { API } from "../config/api";
 
 export default function UpdateProductAdmin() {
+  
   const title = "Product admin";
-  document.title = "DumbMerch | " + title;
+  document.title = title;
 
   let history = useHistory();
   let api = API();

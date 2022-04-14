@@ -22,8 +22,8 @@ export default function ComplainAdmin() {
     // create messages state
     const [messages, setMessages] = useState([])
 
-    const title = "Complain admin"
-    document.title = 'DumbMerch | ' + title
+    const title = "Complain admin";
+    document.title = title;
 
     // consume user context
     const [state] = useContext(UserContext)

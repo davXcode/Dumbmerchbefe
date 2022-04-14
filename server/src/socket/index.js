@@ -21,13 +21,13 @@ const socketIo = (io) => {
   io.on("connection", async (socket) => {
     console.log("client connect: ", socket.id);
 
-    // get user connected id
+    // get user by connected id
     const userId = socket.handshake.query.id;
 
     // save to connectedUser
     connectedUser[userId] = socket.id;
 
-    // define listener on event load admin contact
+    // admin contact
     socket.on("load admin contact", async () => {
       try {
         const adminContact = await user.findOne({
@@ -54,7 +54,7 @@ const socketIo = (io) => {
       }
     });
 
-    // define listener on event load customer contact
+    // customer contact
     socket.on("load customer contacts", async () => {
       try {
         let customerContacts = await user.findAll({
@@ -97,14 +97,14 @@ const socketIo = (io) => {
           },
         }));
 
-        socket.emit("customer contacts", customerContacts);
+        socket.emit("customer contacts", customerContacts); //emmit for send
       } catch (err) {
         console.log(err);
       }
     });
 
     // define listener on event load messages
-    socket.on("load messages", async (payload) => {
+    socket.on("load messages", async (payload) => { // on for receieve
       console.log("load messages", payload);
       try {
         const token = socket.handshake.auth.token;
