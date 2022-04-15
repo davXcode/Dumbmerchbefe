@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import ShowMoreText from "react-show-more-text";
 import rupiahFormat from "rupiah-format";
 
@@ -9,8 +9,6 @@ import DeleteData from "../components/modal/DeleteData";
 
 import imgEmpty from "../assets/empty.svg";
 
-import dataProduct from "../fakeData/product";
-
 // Import useQuery and useMutation
 import { useQuery, useMutation } from "react-query";
 
@@ -18,7 +16,7 @@ import { useQuery, useMutation } from "react-query";
 import { API } from "../config/api";
 
 export default function ProductAdmin() {
-  let history = useHistory();
+  let navigate = useNavigate();
   let api = API();
 
   // Variabel for delete product data
@@ -46,11 +44,11 @@ export default function ProductAdmin() {
   });
 
   const addProduct = () => {
-    history.push("/add-product");
+    navigate("/add-product");
   };
 
   const handleEdit = (id) => {
-    history.push("/edit-product/" + id);
+    navigate("/edit-product/" + id);
   };
 
   // For get id product & show modal confirm delete data

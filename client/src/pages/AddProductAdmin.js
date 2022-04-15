@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import NavbarAdmin from "../components/NavbarAdmin";
 
@@ -14,7 +14,7 @@ export default function AddProductAdmin() {
   const title = "Product admin";
   document.title = title;
 
-  let history = useHistory();
+  let navigate = useNavigate();
   let api = API();
 
   // const [categories, setCategories] = useState([]); //Store all category data
@@ -91,7 +91,7 @@ export default function AddProductAdmin() {
       // Insert product data
       const response = await api.post("/product", config);
 
-      history.push("/product-admin");
+      navigate("/product-admin");
     } catch (error) {
       console.log(error);
     }

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 
 import { useMutation } from "react-query";
@@ -11,7 +11,7 @@ export default function Register() {
   const title = "Register";
   document.title = "DumbMerch | " + title;
 
-  let history = useHistory();
+  let navigate = useNavigate();
   let api = API();
 
   const [state, dispatch] = useContext(UserContext);

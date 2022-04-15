@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import NavbarAdmin from "../components/NavbarAdmin";
 import DeleteData from "../components/modal/DeleteData";
-
-import dataCategory from "../fakeData/category";
 
 import imgEmpty from "../assets/empty.svg";
 
@@ -20,7 +18,7 @@ export default function CategoryAdmin() {
   const title = "Category admin";
   document.title = title;
 
-  let history = useHistory();
+  let navigate = useNavigate();
   let api = API();
 
   // Variabel for delete category data
@@ -38,7 +36,7 @@ export default function CategoryAdmin() {
   });
 
   const handleEdit = (id) => {
-    history.push(`edit-category/${id}`);
+    navigate(`edit-category/${id}`);
   };
 
   // For get id category & show modal confirm delete data
@@ -74,7 +72,7 @@ export default function CategoryAdmin() {
   }, [confirmDelete]);
 
   const addCategory = () => {
-    history.push("/add-category");
+    navigate("/add-category");
   };
 
   return (

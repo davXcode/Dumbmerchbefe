@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 
 // Import useMutation
@@ -13,7 +13,7 @@ export default function Login() {
   const title = "Login";
   document.title = "DumbMerch | " + title;
 
-  let history = useHistory();
+  let navigate = useNavigate();
   let api = API();
 
   const [state, dispatch] = useContext(UserContext);
@@ -64,9 +64,9 @@ export default function Login() {
 
         // Status check
         if (response.data.status == "admin") {
-          history.push("/complain-admin");
+          navigate("/complain-admin");
         } else {
-          history.push("/");
+          navigate("/");
         }
 
         const alert = (

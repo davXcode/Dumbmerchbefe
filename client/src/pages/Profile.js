@@ -1,14 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import dateFormat from "dateformat";
 import convertRupiah from "rupiah-format";
 
 import Navbar from "../components/Navbar";
 
-import imgDumbMerch from "../assets/DumbMerch.png";
-
 import { UserContext } from "../context/userContext";
-import dataTransaction from "../fakeData/transaction";
 
 import imgBlank from "../assets/blank-profile.png";
 

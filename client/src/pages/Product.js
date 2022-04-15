@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/card/ProductCard";
 
+import { useEffect, useState } from "react";
 // Import useQuery
 import { useQuery } from "react-query";
 
@@ -15,6 +16,10 @@ export default function Product() {
 
   const title = "product";
   document.title = title;
+
+  //fitur
+  const [datas, setDatas] = useState([]);
+  const [sortType, setSortType] = useState('id');
 
   // Fetching product data from database
   let { data: products, refetch } = useQuery("productsCache", async () => {
@@ -28,6 +33,21 @@ export default function Product() {
     return response.data;
   });
 
+  // FITUR
+  useEffect(() => {
+    const sortArray = type => {
+      const types = {
+        price: 'price',
+        qty: 'qty',
+      };
+      const sortProperty = types[type];
+      const sorted = [...datas].sort((a, b) => a[sortProperty] - b[sortProperty]);
+      setDatas(sorted);
+    };
+    sortArray(sortType);
+  }, [sortType]);
+
+  // END OF FITUR
   const breakpointColumnsObj = {
     default: 6,
     1100: 4,
@@ -42,6 +62,10 @@ export default function Product() {
         <Row>
           <Col>
             <div className="text-header-product">Product</div>
+            <select onChange={(e) => setSortType(e.target.value)}> 
+                <option value="price">By Price</option>
+                <option value="qty">By Quantity</option>
+            </select>
           </Col>
         </Row>
         <Row className="my-4">

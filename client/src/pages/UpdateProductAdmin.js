@@ -1,11 +1,9 @@
 import React, { useState, useEffect, createElement } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { useParams, useHistory } from "react-router";
+import { useParams, useNavigate } from "react-router";
 
 import NavbarAdmin from "../components/NavbarAdmin";
 import CheckBox from "../components/form/CheckBox";
-
-import dataProduct from "../fakeData/product";
 
 // Import useQuery and useMutation
 import { useQuery, useMutation } from "react-query";
@@ -18,7 +16,7 @@ export default function UpdateProductAdmin() {
   const title = "Product admin";
   document.title = title;
 
-  let history = useHistory();
+  let navigate = useNavigate();
   let api = API();
   const { id } = useParams();
 
@@ -116,7 +114,7 @@ export default function UpdateProductAdmin() {
       // Insert product data
       const response = await api.patch("/product/" + product.id, config);
 
-      history.push("/product-admin");
+      navigate("/product-admin");
     } catch (error) {
       console.log(error);
     }

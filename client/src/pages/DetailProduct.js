@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import convertRupiah from 'rupiah-format';
 
 import Navbar from '../components/Navbar';
 
-import dataProduct from '../fakeData/product';
 
 // Import useQuery and useMutation
 import { useQuery, useMutation } from 'react-query';
@@ -14,7 +13,7 @@ import { useQuery, useMutation } from 'react-query';
 import { API } from '../config/api';
 
 export default function DetailProduct() {
-  let history = useHistory();
+  let navigate = useNavigate();
   let { id } = useParams();
   let api = API();
 
@@ -77,12 +76,12 @@ export default function DetailProduct() {
         onSuccess: function (result) {
           
           console.log(result);
-          history.push('/profile');
+          navigate('/profile');
         },
         onPending: function (result) {
           
           console.log(result);
-          history.push('/profile');
+          navigate('/profile');
         },
         onError: function (result) {
           
